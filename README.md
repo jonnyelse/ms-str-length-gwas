@@ -24,13 +24,6 @@ missing phenotype or covariates are excluded from all loci.
 - `bcftools`, `awk` and `gzip`
 - An ExpansionHunter VCF containing `VARID`, `GT` and `REPCN`
 
-Record exact versions in the paper release:
-
-```bash
-Rscript --version
-Rscript -e 'packageVersion("data.table")'
-bcftools --version
-```
 
 ## Inputs and execution
 
