@@ -53,6 +53,13 @@ Rscript run_str_length_gwas.R \
 The sample file supplied to R must have exactly the same sample order as the
 genotype columns. The two `bcftools` commands above enforce this.
 
+## Fine-mapping
+
+The `finemapping/` directory contains the corresponding joint SNV–STR
+fine-mapping implementations for FINEMAP and SuSiE-RSS. See
+[`finemapping/README.md`](finemapping/README.md) for the required inputs,
+analysis settings and execution commands.
+
 ## Output
 
 | Column | Meaning |
