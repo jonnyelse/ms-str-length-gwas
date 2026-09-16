@@ -13,8 +13,6 @@ read_summary_statistics <- function(path, add_finemap_placeholders = FALSE) {
   x$SE <- as.numeric(x$SE)
   x$Z <- x$BETA / x$SE
   if (add_finemap_placeholders) {
-    # FINEMAP requires these columns in its .z schema. They were fixed
-    # placeholders in this length-dosage analysis and were not variant inputs.
     x$A1 <- "A"
     x$A2 <- "C"
     x$MAF <- 0.2
