@@ -24,19 +24,12 @@ missing phenotype or covariates are excluded from all loci.
 - `bcftools`, `awk` and `gzip`
 - An ExpansionHunter VCF containing `VARID`, `GT` and `REPCN`
 
-Record exact versions in the paper release:
 
-```bash
-Rscript --version
-Rscript -e 'packageVersion("data.table")'
-bcftools --version
-```
 
 ## Inputs and execution
 
 The covariate TSV must contain `IID`, `disease_status`, `sex`, and
-`PC1` through `PC10`. Additional columns are allowed. State the coding of
-`sex` in the manuscript or repository data dictionary.
+`PC1` through `PC10`. Additional columns are allowed. 
 
 ```bash
 chmod +x prepare_str_length_genotypes.sh
@@ -57,8 +50,6 @@ Rscript run_str_length_gwas.R \
   --chunk-size 100
 ```
 
-The sample file supplied to R must have exactly the same sample order as the
-genotype columns. The two `bcftools` commands above enforce this.
 
 ## Fine-mapping
 
@@ -82,17 +73,8 @@ analysis settings and execution commands.
 | `call_rate` | Proportion with two observed alleles |
 | `status` | Model diagnostic |
 
-Invariant loci and failed fits are retained with missing statistics and a
-diagnostic status rather than being assigned p=1.
 
-## Reproducibility and data governance
+## Data governance
 
-- Apply and document all sample- and locus-level QC before this analysis.
-- MHC exclusion, LD grouping, plotting and lead selection are downstream steps
-  and intentionally are not embedded in the association script.
 - Remove withdrawn participants when creating `keep.samples`.
-- Never commit individual-level VCFs, genotypes, covariates, sample IDs or
-  withdrawal lists to a public repository.
-- Include synthetic miniature inputs and expected output when controlled data
-  cannot be shared.
-- Tag the manuscript commit and archive the release (for example with Zenodo).
+
