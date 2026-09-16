@@ -1,8 +1,7 @@
 # Joint SNV–STR fine-mapping
 
 These scripts document the FINEMAP and SuSiE-RSS analyses used to fine-map
-combined SNV and STR association signals. Plotting and locus-specific labels are
-excluded because they are not part of the statistical fine-mapping method.
+combined SNV and STR association signals.
 
 ## Method
 
@@ -14,8 +13,7 @@ between variants. Summary statistics and LD are aligned by variant identifier.
 
 Both methods use `BETA` and `SE`, with `Z = BETA / SE`. FINEMAP is run using
 stochastic search (`--sss`). SuSiE is run with `susie_rss`, a maximum of 300
-iterations and `estimate_residual_variance = FALSE`, matching the paper
-analysis. No LD regularisation is applied.
+iterations and `estimate_residual_variance = FALSE`.
 
 ## Inputs
 
@@ -28,15 +26,12 @@ The summary-statistics file is a headered TSV with these columns:
 | `POS` | GRCh38 position |
 | `BETA` | Marginal log-odds coefficient |
 | `SE` | Standard error of `BETA` |
-FINEMAP also requires allele and MAF columns in its `.z` file. As in the
-original analysis, these schema fields are set to fixed placeholders (`A1=A`,
-`A2=C`, `MAF=0.2`). Fine-mapping is driven by the marginal effect estimates,
-standard errors and LD matrix; the placeholders do not encode variant-specific
-information in this analysis.
+FINEMAP also requires allele and MAF columns in its `.z` file. These schema fields are set to fixed placeholders (`A1=A`,
+`A2=C`, `MAF=0.2`). 
 
 The genotype input is an RDS file containing a numeric matrix with variants as
 rows, samples as columns, and unique variant IDs as row names. It must contain
-the same discovery samples used to estimate the association statistics.
+the same samples used to estimate the association statistics.
 
 ## Sample size
 
@@ -47,7 +42,7 @@ programs was calculated as:
 N_SAMPLES <- round(2 / (1 / N_cases + 1 / N_controls))
 ```
 
-For 6,296 cases and 28,946 controls this gives 10,342.
+
 
 ## Run FINEMAP
 
@@ -86,6 +81,4 @@ The maximum number of causal signals is set independently for every region with
 `--max-signals`. The same value is passed as FINEMAP's `--n-causal-snps` and
 SuSiE's `L`; it is not hard-coded in either script.
 
-The fine-mapping regions were defined using the study's pre-specified LD-window
-procedure. Variants flagged by the case-case batch-effect analysis were removed
-during input preparation, before running either fine-mapping method.
+The fine-mapping regions were defined using pre-specified LD-windows.
