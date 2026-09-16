@@ -1,0 +1,40 @@
+# Keep all participant-level inputs and analysis outputs out of Git.
+data/
+inputs/
+results/
+output/
+
+# Genetic and tabular data
+*.vcf
+*.vcf.gz
+*.vcf.bgz
+*.bcf
+*.bed
+*.bim
+*.fam
+*.pgen
+*.pvar
+*.psam
+*.sample
+*.csv
+*.csv.gz
+*.tsv
+*.tsv.gz
+
+# Sample, phenotype and covariate files
+*sample*
+*covar*
+*phenotype*
+*withdraw*
+*keep*
+*exclude*
+
+# R and temporary files
+.Rhistory
+.RData
+.Ruserdata
+*.log
+*.tmp
+*.out
+Thumbs.db
+.DS_Store
